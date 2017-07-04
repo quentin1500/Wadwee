@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+
+        <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;"> -->
+        <allow-navigation href="http://*/*" />
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" href="lib/node_modules/angular-material/angular-material.css">
+        <link rel="stylesheet" type="text/css" href="css/index.css">        
+
+
+        <title>Wadwee</title>
+    </head>
+
+
+    <body ng-app="wadwee">
+        <!-- Div menu haut -->
+        <div class="top_header" ng-controller="headerControl as ctrl" ng-cloak>
+            <md-toolbar class="md-accent">
+                <div class="md-toolbar-tools">
+                  <md-button
+                    class="md-icon-button"
+                    aria-label="Settings"
+                    ng-click="ctrl.showToolbarMenu($event, ctrl.settings)">
+                    <md-icon md-svg-icon="img/icons/android-menu.svg"></md-icon>
+                  </md-button>
+                  <h2>Toolbar with grouped panels</h2>
+                  <span flex></span>
+                  <md-button
+                    class="md-icon-button"
+                    aria-label="More"
+                    ng-click="ctrl.showToolbarMenu($event, ctrl.more)">
+                    <md-icon md-svg-icon="img/icons/android-more_vert.svg"></md-icon>
+                  </md-button>
+                </div>
+            </md-toolbar>
+        </div>
+
+        <div ng-controller="contentControl as ctrl">
+                <div class="" ng-repeat="content in ctrl.contents">
+                  <div layout="row" layout-sm="column" >
+                      <button class="md-button max_width" ng-click="ctrl.showContent($event, content.id, ctrl.children)">
+                        <span>{{content.name}}</span>
+                      </button>
+                      <div ng-if="ctrl.checkBox">
+                        <md-checkbox ng-checked="content.checked" class="checkboxCenter">
+                      </div>
+                      <button class="md-button">
+                        <span>></span>
+                      </button>
+                 </div>
+                 <div>{{list}}</div>
+            </div>
+        </div>
+
+        <section class="plus_button_div" ng-controller="footerControl" ng-cloak>
+            <md-content> 
+                    <md-button class="md-fab md-primary" aria-label="Add">
+                        <md-icon md-svg-src="img/icons/android-add.svg"></md-icon>
+                    </md-button>
+            </md-content>
+        </section>
+
+        <script type="text/javascript" src="cordova.js"></script>
+
+        <script src="lib/node_modules/angular/angular.js"></script>
+        <script src="lib/node_modules/angular-aria/angular-aria.js"></script>
+        <script src="lib/node_modules/angular-animate/angular-animate.js"></script>
+        <script src="lib/node_modules/angular-material/angular-material.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+    </body>
+</html>
